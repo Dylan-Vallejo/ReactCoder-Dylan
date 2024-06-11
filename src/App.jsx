@@ -1,18 +1,27 @@
 import React from "react";
 import './App.css'
 import Menu  from './components/NavBar/NavBar'
-import ItemListConteiner from './conteiners/itemListConteiner'
+import ItemListConteiner from './components/Conteiners/ItemListConteiner/itemListConteiner'
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ItemDetailConteiner from "./components/Conteiners/ItemDetailConteiner/itemDetailconteiner";
 
 function App() {
   
 
   return (
-    <div>
+    <BrowserRouter>
 
       <Menu />
-      <ItemListConteiner greeting = {"Bienvenido a mi Tienda"} />
 
-    </div>
+      <Routes>
+        <Route path='/' element={<ItemListConteiner />} />
+        <Route path='/category/:idCategory' element={<ItemListConteiner />} />
+        <Route path='/item/:idItem' element={<ItemDetailConteiner />} />
+      </Routes>
+      
+
+    </BrowserRouter>
     
   )
 }
