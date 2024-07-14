@@ -1,27 +1,46 @@
 import React, { useEffect, useState } from 'react'
 import { ItemList } from '../ItemList/itemList'
-import { getProducts } from '../../../Data/asyncmonck'
 import './itemListConteiner.css'
 import { useParams } from 'react-router-dom'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import { db } from '../../../firebase/client'
 
  const ItemListConteiner = () => {
-    const [productos, setProductos] = useState([])
+    const [productos, setProductos] = useState([]);
 
-    const { idCategory } = useParams()
+  const { categoryId } = useParams()
 
-    useEffect(() => {
-        getProducts(idCategory)
-            .then(res => setProductos(res))
-            .catch(err => console.error(err))
-    }, [idCategory])
+  useEffect(() => {
+
+    
+    const misProductos =
+      categoryId ?
+        query(collection(db, "productos"), where("categoria", "==", categoryId))
+        :
+        collection(db, "productos")
+
+    
+    getDocs(misProductos)
+      .then((res) => {
+        const nuevosProductos = res.docs.map((doc) => {
+          const data = doc.data()
+          return { id: doc.id, ...data }
+        })
+        setProductos(nuevosProductos)
+      })
+    
+
+  }, [categoryId])
 
 
-    return (
-        <>
-            <h1 className='titulo' >{idCategory ? <>{idCategory}</> : <>Pagina Principal</>}</h1>
-            {productos ? <ItemList productos={productos} /> : <div>Cargando...</div>}
-        </>
-    )
+  return (
+    <div className='itemcontainer'>
+
+      {productos.length == 0 ? (<h1>CARGANDO..</h1>) : (<ItemList productos={productos} />)}
+
+    </div>
+  )
+
 }
 
 export default ItemListConteiner;

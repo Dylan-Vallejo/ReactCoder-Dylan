@@ -1,9 +1,47 @@
-.img{
-    width: 10rem;
-}
-.name{
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px;
+    margin-top: 2rem;
+  }
+  
+  .contenedor-item {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .img-item {
+    width: 100%;
+    height: auto;
+    max-width: 200px; 
+    margin: 0 auto;
+  }
+  
+  .titulo-item {
     color: black;
-}
-.price{
-    color: black;
-}
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .p-item {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .btn-card {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .btn-card:hover {
+    background-color: #0056b3;
+  }

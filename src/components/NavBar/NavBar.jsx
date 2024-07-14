@@ -17,13 +17,13 @@ function Menu() {
           <Link to={'/'}>
             <li className="lista-item">Inicio</li>
           </Link>
-          <Link to={'/Category/Notbooks'}>
-            <li className="lista-item">Notbooks</li>
+          <Link to={'/categoria/Notebooks'}>
+            <li className="lista-item">Notebooks</li>
           </Link>
-          <Link to={'/Category/Consolas'}>
+          <Link to={'/categoria/consolas'}>
             <li className="lista-item">Consolas</li>
           </Link>
-          <Link to={'/Category/Auriculares'}>
+          <Link to={'/categoria/Auriculares'}>
             <li className="lista-item">Auriculares</li>
           </Link>
   
