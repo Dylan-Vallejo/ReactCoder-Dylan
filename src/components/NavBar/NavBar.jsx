@@ -9,7 +9,7 @@ function Menu() {
   
       <nav className="navbar">
         <Link to={'/'}>
-          <h1>Mi-Ecommerce</h1>
+          <h1 className="titulo-1">Mi-Ecommerce</h1>
         </Link>
         
         <ul className='nav-ul'>
